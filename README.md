@@ -15,6 +15,8 @@
 
 [Wajiha Noor](https://github.com/WawNun)
 
+[Preeti Juturu](https://github.com/preetijuturu)
+
 [Salvador Jr. Olguin](https://github.com/Salolg5)
 
 -------
@@ -29,7 +31,7 @@
 
 `May 19, 2021 `
 
-- [ ] **Project Milestone 1**: Paper Outline/ Literature Review & Basic Visualization.
+- [x] **Project Milestone 1**: Paper Outline/ Literature Review & Basic Visualization.
 
 `May 26, 2021 `
 - [ ] **Project Milestone 2**: Complete Data Analysis and Visualization.
@@ -50,14 +52,17 @@ Google drive for all relevant files shared with the group members.
 -  [HackMD for Proposal Writeup](https://hackmd.io/@xSZKUBllSUCUfYxmgoh_yA/SyurmYCUd)
 Project proposal for our final project.
   
-- [HackMD for Literature Reivew](https://hackmd.io/@Laura786/S15WsEJ__/edit)
+- [HackMD for Literature Review](https://hackmd.io/@Laura786/S15WsEJ__/edit)
 Review of the past literature -A total of 12 papers will reviewed for the study.
 
 - [HackMD for Codebook Data Selection](https://hackmd.io/@Laura786/ryJBHa-uu/edit) 
  Organizing the data, identifying potential variables, and sources. 
  
 - [Code in Python ](https://github.com/preetijuturu/p280s21project3/tree/main/Codebook)
- Mutliple python notebooks for the data analysis.
+ Multiple python notebooks for the data analysis.
+ 
+ - [Project Manuscript](https://github.com/preetijuturu/p280s21project3/blob/main/Manuscript.md)
+   Compiling research elements into a manuscript.
  ------
  
 ##  :clipboard: Data Sources
@@ -92,7 +97,7 @@ b.fetch("epa/ejscreen/ejscreen_2020.parquet", "./ejscreen_2020.parquet")
 ejscreen = pd.read_parquet('ejscreen_2020.parquet')
 ```
 
- 4. Census Bureau's TIGERLINE 
+ 4. Census Bureau's TIGERLINE FILES
      - [Elementary School Districts]( http://www2.census.gov/geo/tiger/TIGER2010DP1/ELSD_2010Census_DP1.zip)
      - [Census Bureau's TIGER database documentation]( https://www.census.gov/programs-surveys/saipe/technical-documentation/methodology/school-districts/overview-school-district.html)
      - [See the boundary files on this page]( https://www.census.gov/geographies/mapping-files/2010/geo/tiger-data.html)
@@ -100,17 +105,17 @@ ejscreen = pd.read_parquet('ejscreen_2020.parquet')
 ```
 tracts = gpd.read_parquet("s3://spatial-ucr/census/acs/acs_2018_tract.parquet")
 ```
-Side Note:
-To make the plots bigger in a notebook:
-
-```
-import matplotlib.pyplot as plt
-plt.rcParams['figure.figsize'] = [10, 5]
-
-```
 ----
-## Article/Readings
+
+## 🛠️ Additional Resources
+
+Repository- Introduction to Geospatial Data Analysis with Python
+https://github.com/sjsrey/gdapy18
+
+----
+## 🗃️ Article/Readings
 [As 'diesel death zones' spread in California, pollution regulators place new rules on warehouse industry](https://phys.org/news/2021-05-diesel-death-zones-california-pollution.html)
+
 
 
 -----
@@ -128,17 +133,83 @@ plt.rcParams['figure.figsize'] = [10, 5]
 
 ## :dart: Tasks 
 
-Due Date: `05/15/2021`
-- Each member to finish literature review summary of the 2 articles.
-- Data sets for analysis (2 person per dataset).
-- Close issue [#20](https://github.com/preetijuturu/p280s21project3/issues/20)
+Due Date: `05/26/2021`
+- Attend group meeting schedule for `05/24/2021`
+- Create a combined file containing the clean code.
+- Attempt Veroni method on our data.
 
 **Note: Details of each tasks are organized in the projects section of the repo.**
 
 ---
 
 ## :date: Group Meeting Log
+------
+`5/24/2021`
+
+- [x]  **Group Meeting with Professor** 
+ 
+ *Agenda: Discuss the issue of multiple legends on the choropleth map and how to create a score combining EJ and School performance.*
+ 
+- Suggestions for the project
+* Veroni method:
+	* neighborhood (average census block groups) represented by polygons
+	* Veroni method entails looking at the locations of schools subdivided within neighborhood polygons 
+		* Closest school per polygon 	  
+		* Link for visual rep: https://pysal.org/notebooks/lib/libpysal/voronoi.html 
+	* Size of polygon depends on the spatial distribution of the points
+	* Polygons will have score of schools with EJ Layer 
+	* Veroni is another layer that we are adding to our map. 
+	* Okay to combine NCES/SEDA/ACS/EJ Data by GeoId. Work from one file.
+* Wednesday night Professor will do a demo on how to use the veroni method 
+* Policy Perspective of Project: Purposes of project does not require policy recommendation- optional 
+	* we can touch on policy implications  
+		* Prof: Recommends taxing corporations that emit environmental toxins 	 	 
+* Limitations of using Veroni method: 
+	* Has constant population density - assumptions 
+	* Distance measures as crow flies 
+* Date Presentations Due forthcoming 	 
+-----
+
+`5/21/2021`
+- [x]  **Group Meeting** 
+
+*Agenda: Division of Work*
+-  Wajiha and Sal and Esteban looking at SEDA variables and how to interpret 
+-  How to access the correlation of the SEDA outcomes and the 
+-  Working on the paper and presentation, drafting intro [Preeti will do the intro]
+-  Create outline for presentation [Esteban and Laura],
+-  Everyone will work on the manuscript; preeti will let us know when there are updates on the manuscript
+
+`Upcoming Task`
+- Look into the environmental policy for the inland empire for policy alt.
+
+
 ----
+`5/19/2021`
+- [x]  **In Class Group Meeting** 
+
+ *Agenda: Discussion on progress made so far and possible questions.*
+
+Laura: 
+- create a smaller version of EJ data 
+- Then save to local account 
+- Use block group to join with EJ 
+- Join Everything 
+- For analysis: if you are going to look at assocation between demographic and cancer risk; then you should look at Demographics and Cancer risk and not demographics and Cancer Index 
+- Look at what Percentile is
+
+Wajiha: 
+-  Use School Catchment join 
+-  What's the relevant data area around a school? 
+-  Think about how you expect the relationship to work between schools and [pollution for example]
+-  One possible route for the project is descriptive. 
+-  If descriptive then we should use precalculated index (it also depends on our research question)  
+
+Links: 
+1. https://github.com/sjsrey/gdapy18
+2. https://github.com/sjsrey/gqs18/blob/master/content/geopandas_buffering.org
+
+-----
 `5/06/2021`
 - [x]  **Group Meeting** 
 
@@ -189,4 +260,6 @@ List of questions generated during the discussion session:
 15. Looking at environmental risk exposure through school district boundaries (ex. high pediatric asthma in certain school districts; change over time)
 -----
 
+
+  	
 
