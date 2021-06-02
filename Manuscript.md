@@ -1,4 +1,5 @@
 # A Comparative Analysis of Exposure to Respiratory Hazards and School Performance in Southern California.
+by Laura Shah, Preeti Juturu, Wajiha Noor, Esteban Villegas, and Salvador Olguin 
 
 ## Intro
 This section shall contain the literature review elements in addition to reasoning behind the research topic selection
